@@ -1,6 +1,6 @@
 ﻿using Dapper;
-using DataAccesLayer.Interface;
-using DataAccesLayer.Models;
+using UserManagement.DataAccesLayer.Interface;
+using UserManagement.DataAccesLayer.Models;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -8,15 +8,18 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 
-namespace DataAccesLayer
+namespace UserManagement.DataAccesLayer
 {
     public class DbOperations : IDbOperations
     {
         private readonly IConfiguration _configuration;
-        public DbOperations(IConfiguration configuration)
+        private readonly IMapper _mapper;
+        public DbOperations(IConfiguration configuration, IMapper mapper)
         {
             _configuration = configuration;
+            _mapper = mapper;
         }
         public Response UserCreate(Users user)
         {
@@ -36,7 +39,7 @@ namespace DataAccesLayer
                     user.Tittle,
                     user.DepartmanId
                 });
-                return new Response { message = "User created susccesfuly", status = 200 };
+                return new Response { message = "User created susccesfuly", state = true };
             }
         }
 
@@ -50,39 +53,45 @@ namespace DataAccesLayer
                 gsm
                 });
 
-                return new Response { message = "User Deleted succesfuly", status = 200 };
+                return new Response { message = "User Deleted succesfuly", state = true };
             }
         }
 
-        public List<Users> UserListing()
+        public List<DtoUsers> UserListing()
         {
-            using (var Con = new SqlConnection(_configuration.GetConnectionString("Default")))
-            {
-                //var result = Con.ExecuteReader("Select * From Users Where State=1");
+            var Con = new SqlConnection(_configuration.GetConnectionString("Default"));
 
-                var result = Con.Query<Users>("Select * From Users Where State=1").ToList() ;
-                return result;
-            }
+            var result = Con.Query<Users>("Select * From Users Where State=1").ToList() ;
+
+            List<DtoUsers> dto = _mapper.Map<List<DtoUsers>>(result);
+            dto[0].state = true ;
+            return dto;
+            
+
         }
 
         public Response UserUpdate(ForUpdate newUser)
         {
             using (var Con = new SqlConnection(_configuration.GetConnectionString("Default")))
             {
+                if (newUser.DateOfBirth == null)
+                {
+                    //sdasd
+                }
                 Con.Execute("UPDATE Users SET Name=@name,LastName=@LastName,DateOfBirth=@DateOfBirth,Email=@Email,Gsm=@Gsm," +
                     "Tittle=@Tittle,DepartmanId=@DepartmanId WHERE Id=@Id",
                     new
                     {
-                        newUser.newUser.Name,
-                        newUser.newUser.Lastname,
-                        newUser.newUser.DateOfBirth,
-                        newUser.newUser.Email,
-                        newUser.newUser.Gsm,
-                        newUser.newUser.Tittle,
-                        newUser.newUser.DepartmanId,
+                        newUser.Name,
+                        newUser.Lastname,
+                        newUser.DateOfBirth,
+                        newUser.Email,
+                        newUser.Gsm,
+                        newUser.Tittle,
+                        newUser.DepartmanId,
                         newUser.id
                     });
-                return new Response { message = "User Updated succesfuly", status = 200 };
+                return new Response { message = "User Updated succesfuly", state = true };
             }
         }
     }

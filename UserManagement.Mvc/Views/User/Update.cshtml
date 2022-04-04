@@ -1,0 +1,147 @@
+﻿
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_defaultLayout.cshtml";
+}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<div class="wrapper d-flex flex-column flex-row-fluid">
+    <div class="container">
+        <form>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer013">First name</label>
+                    <input type="number" class="form-control is-valid" id="id" name="id" placeholder="Güncellemek istediğiniz kişinin id'sini giriniz."
+                           required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer013">First name</label>
+                    <input type="text" class="form-control is-valid" id="Name" name="Name" placeholder="First name"
+                           value="Mark">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer023">Last name</label>
+                    <input type="text" class="form-control is-valid" id="Lastname" name="Lastname" placeholder="Last name"
+                           value="Otto">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServerUsername33">Email</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend33">#</span>
+                        </div>
+                        <input type="text" class="form-control is-invalid" id="Email" name="Email" placeholder="Email"
+                               aria-describedby="inputGroupPrepend33">
+                        <div class="invalid-feedback">
+                            Please choose a Email.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer023">Gsm Number</label>
+                    <input type="text" class="form-control is-valid" id="Gsm" name="Gsm" placeholder="541*******"
+                           value="Otto">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer023">Title</label>
+                    <input type="text" class="form-control is-valid" id="Tittle" name="Tittle" placeholder="CEO"
+                           value="Otto">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer023">Date of birth</label>
+                    <input type="date" class="form-control is-valid" id="DateOfBirth" name="DateOfBirth">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer023">DepartmanId</label>
+                    <input type="number" class="form-control is-valid" id="DepartmanId" name="DepartmanId">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" name="checkbox" required />
+                    <label for="invalidCheck33">Agree to terms and conditions</label>
+                    <div class="invalid-feedback">
+                        You must agree before submitting.
+                    </div>
+                </div>
+
+            </div>
+            <button class="btn btn-primary" type="button" id="submit">Submit form</button>
+        </form>
+    </div>
+</div>
+<script>
+    $("#submit").click(function () {
+
+        let check = $('#checkbox').is(':checked');
+        if (check) {
+            alert("Tüm koşuşlları kabul etmeden devam edemezsiniz.");
+        }
+        else
+        {
+            var Id = $("#id").val();
+            var name = $("#Name").val();
+            var lastname = $("#Lastname").val();
+            var gsm = $("#Gsm").val();
+            var Tittle = $("#Tittle").val();
+            var DepartmanId = $("#DepartmanId").val();
+            var Email = $("#Email").val();
+            var date = $("#DateOfBirth").val();
+
+            if (id == null) {
+                alert("Gerekli alanların tümünü doldurunuz!");
+            } else {
+                $.ajax({
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    type: 'POST',
+                    url: "http://localhost:5252/api/User/ForUpdate",
+                    dataType: 'JSON',
+                    data: JSON.stringify({
+                        id :Id ,
+                        Name: name,
+                        Lastname: lastname,
+                        DateOfBirth: date,
+                        Email: Email,
+                        Gsm: gsm,
+                        Tittle: Tittle,
+                        DepartmanId: DepartmanId
+                    }),
+                    success: function (result) {
+                        console.log(result);
+                        alert(result.message);
+                        /*
+                        let resultParse = JSON.parse(result)
+                        alert(resultParse.message);*/
+                    },
+                    error: function (xhr) {
+                        console.log(xhr)
+                        alert(xhr)
+                    }
+                });
+            }
+        }
+
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js" />
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+

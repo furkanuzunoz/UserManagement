@@ -1,13 +1,13 @@
-﻿using BusinesLayer.Interface;
-using DataAccesLayer.Interface;
-using DataAccesLayer.Models;
+﻿using UserManagement.BusinesLayer.Interface;
+using UserManagement.DataAccesLayer.Interface;
+using UserManagement.DataAccesLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinesLayer.Concrete
+namespace UserManagement.BusinesLayer.Concrete
 {
     public class UserService : IUserService
     {
@@ -22,12 +22,12 @@ namespace BusinesLayer.Concrete
             try
             {
                 
-                var result = _dbOperations.UserCreate(user);
-                return result;
+                _dbOperations.UserCreate(user);
+                return new Response {message="User Created Succesfuly" ,state=true };
             }
             catch (Exception)
             {
-                throw;
+                return new Response { message = "User Created Fail Look at the Db operations", state = false };
             }
         }
 
@@ -35,26 +35,27 @@ namespace BusinesLayer.Concrete
         {
             try
             {
-                var result = _dbOperations.UserDelete(name, lastname, gsm);
-                return result;
+                _dbOperations.UserDelete(name, lastname, gsm);
+                return new Response { message = "User Deleted Succesfuly", state = true }; ;
             }
             catch (Exception)
             {
-                return new Response { message = "User Deleting Failed", status = 401 };
+                return new Response { message = "User Deleting Failed Some Db Operations error", state = false };
             }
             
         }
 
-        public List<Users> UserListing()
+        public List<DtoUsers> UserListing()
         {
             try
             {
                 var result = _dbOperations.UserListing();
+
                 return result;
             }
-            catch (Exception)
+            catch (Exception )
             {
-                throw new Exception(message:"User Listing Failed");
+                throw new Exception(message:"Some Db Operations Error");
             }
            
         }
@@ -63,12 +64,12 @@ namespace BusinesLayer.Concrete
         {
             try
             {
-                var result =_dbOperations.UserUpdate(newUser);
-                return result;
+                _dbOperations.UserUpdate(newUser);
+                return new Response { message = "User Updated Succesfuly", state = true }; ;
             }
             catch (Exception)
             {
-                throw;
+                return new Response { message = "User Updated Failed Some Db Operations error" , state = false };
             }
         }
     }

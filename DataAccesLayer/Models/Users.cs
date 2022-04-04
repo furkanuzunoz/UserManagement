@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccesLayer.Models
+namespace UserManagement.DataAccesLayer.Models
 {
     public class Users
     {

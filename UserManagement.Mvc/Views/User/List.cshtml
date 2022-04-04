@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_defaultLayout.cshtml";
+}
+
+
+<div class="wrapper d-flex flex-column flex-row-fluid">
+    <div style="margin: 0px 70px;" class="container">
+        <table class="table table-hower">
+            <thead>
+                <tr style="color:darkred ; border:medium">
+                    <th>Adı</th>
+                    <th>Soyadı</th>
+                    <th>Email</th>
+                    <th>Gsm</th>
+                    <th>Tittle</th>
+                    <th>Departman Id</th>
+
+                </tr>
+            </thead>
+            <tbody id="getUser">
+            </tbody>
+        </table>
+       
+    </div>
+    
+</div>
+<script>
+    let User;
+        $("document").ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: "http://localhost:5252/api/User",
+                success: function (users) {
+                    User = users;
+                    for (var i = 0; i < users.length; i++) {
+
+                        
+                        var markup = "<tr><th>" + users[i].name + "</th><th>" + users[i].lastname + "</th><th>" + users[i].email +
+                            "</th><th>" + users[i].gsm + "</th><th>" + users[i].tittle + "</th><th>" + users[i].departmanId + "</th></tr>" ;
+                        $("table tbody").append(markup);
+                        
+
+                    }
+
+
+
+                }
+            });
+        });
+    /*for (var i = 0; i < User.length; i++) {
+        $("#btn" + i.toString()).click(function () {
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: 'POST',
+                url: "http://localhost:5252/api/User/Delete",
+                dataType: 'JSON',
+                data: JSON.stringify({
+                    name: User[i].name,
+                    lastname: User[i].lastname,
+                    gsm: User[i].gsm,
+                }),
+                success: function (result) {
+                    console.log(result);
+                    alert(result.message);
+                    /*
+                    let resultParse = JSON.parse(result)
+                    alert(resultParse.message);
+                },
+                error: function (xhr) {
+                    console.log(xhr)
+                    alert(xhr)
+                }
+            });
+
+        });
+    }*/
+        
+</script>

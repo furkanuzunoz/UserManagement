@@ -1,6 +1,6 @@
 ﻿
-using BusinesLayer.Interface;
-using DataAccesLayer.Models;
+using UserManagement.BusinesLayer.Interface;
+using UserManagement.DataAccesLayer.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,22 +20,36 @@ namespace UserManagement.Api.Controllers
             _userService = userService;
         }
         [HttpPost("ForUserCreate")]
-        public IActionResult Creating(Users user)
+        public IActionResult Creating([FromBody] Users user)
         {
+      
             var result = _userService.UserCreate(user);
-            return StatusCode(result.status,result.message);
+            if (result.state)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
-        [HttpPut]
-        public IActionResult Update(ForUpdate user)
+        [HttpPost("ForUpdate")]
+        public IActionResult Update([FromBody] ForUpdate user)
         {
             var result = _userService.UserUpdate(user);
-            return StatusCode(result.status, result.message);
+            if (result.state)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
-        [HttpPatch]
-        public IActionResult Delete(string name,string lastname,string gsm)
+        [HttpPost("Delete")]
+        public IActionResult Delete([FromBody] string str)
         {
-            var result = _userService.UserDelete(name,lastname,gsm);
-            return StatusCode(result.status, result.message);
+            return Ok(str);
+          /*  var result = _userService.UserDelete(model.name,model.lastname,model.gsm);
+            if (result.state)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);*/
         }
         [HttpGet]
         public IActionResult Listing()

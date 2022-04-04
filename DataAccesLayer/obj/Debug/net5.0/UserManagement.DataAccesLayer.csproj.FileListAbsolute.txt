@@ -1,0 +1,12 @@
+C:\Users\ASUS\source\repos\UserManagement.Api\DataAccesLayer\bin\Debug\net5.0\UserManagement.DataAccesLayer.deps.json
+C:\Users\ASUS\source\repos\UserManagement.Api\DataAccesLayer\bin\Debug\net5.0\UserManagement.DataAccesLayer.dll
+C:\Users\ASUS\source\repos\UserManagement.Api\DataAccesLayer\bin\Debug\net5.0\ref\UserManagement.DataAccesLayer.dll
+C:\Users\ASUS\source\repos\UserManagement.Api\DataAccesLayer\bin\Debug\net5.0\UserManagement.DataAccesLayer.pdb
+C:\Users\ASUS\source\repos\UserManagement.Api\DataAccesLayer\obj\Debug\net5.0\UserManagement.DataAccesLayer.csproj.AssemblyReference.cache
+C:\Users\ASUS\source\repos\UserManagement.Api\DataAccesLayer\obj\Debug\net5.0\UserManagement.DataAccesLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\source\repos\UserManagement.Api\DataAccesLayer\obj\Debug\net5.0\UserManagement.DataAccesLayer.AssemblyInfoInputs.cache
+C:\Users\ASUS\source\repos\UserManagement.Api\DataAccesLayer\obj\Debug\net5.0\UserManagement.DataAccesLayer.AssemblyInfo.cs
+C:\Users\ASUS\source\repos\UserManagement.Api\DataAccesLayer\obj\Debug\net5.0\UserManagement.DataAccesLayer.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\source\repos\UserManagement.Api\DataAccesLayer\obj\Debug\net5.0\UserManagement.DataAccesLayer.dll
+C:\Users\ASUS\source\repos\UserManagement.Api\DataAccesLayer\obj\Debug\net5.0\ref\UserManagement.DataAccesLayer.dll
+C:\Users\ASUS\source\repos\UserManagement.Api\DataAccesLayer\obj\Debug\net5.0\UserManagement.DataAccesLayer.pdb

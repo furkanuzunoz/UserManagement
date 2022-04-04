@@ -5,13 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccesLayer.Models
+namespace UserManagement.DataAccesLayer.Models
 {
     public class ForUpdate
     {
         public int id { get; set; }
-        [Required(ErrorMessage ="plase give new user")]
-        public Users newUser { get; set; }
+        public string Name { get; set; }
+        public string Lastname { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string Email { get; set; }
+        public string Gsm { get; set; }
+        public string Tittle { get; set; }
+        public int DepartmanId { get; set; }
 
     }
 }

@@ -4,12 +4,12 @@
     "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\UserManagement.Api\\UserManagement.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\BusinesLayer\\BusinesLayer.csproj": {
+    "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\BusinesLayer\\UserManagement.BusinesLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\BusinesLayer\\BusinesLayer.csproj",
-        "projectName": "BusinesLayer",
-        "projectPath": "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\BusinesLayer\\BusinesLayer.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\BusinesLayer\\UserManagement.BusinesLayer.csproj",
+        "projectName": "UserManagement.BusinesLayer",
+        "projectPath": "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\BusinesLayer\\UserManagement.BusinesLayer.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\BusinesLayer\\obj\\",
         "projectStyle": "PackageReference",
@@ -32,8 +32,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\DataAccesLayer\\DataAccesLayer.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\DataAccesLayer\\DataAccesLayer.csproj"
+              "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\DataAccesLayer\\UserManagement.DataAccesLayer.csproj": {
+                "projectPath": "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\DataAccesLayer\\UserManagement.DataAccesLayer.csproj"
               }
             }
           }
@@ -76,12 +76,12 @@
         }
       }
     },
-    "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\DataAccesLayer\\DataAccesLayer.csproj": {
+    "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\DataAccesLayer\\UserManagement.DataAccesLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\DataAccesLayer\\DataAccesLayer.csproj",
-        "projectName": "DataAccesLayer",
-        "projectPath": "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\DataAccesLayer\\DataAccesLayer.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\DataAccesLayer\\UserManagement.DataAccesLayer.csproj",
+        "projectName": "UserManagement.DataAccesLayer",
+        "projectPath": "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\DataAccesLayer\\UserManagement.DataAccesLayer.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\DataAccesLayer\\obj\\",
         "projectStyle": "PackageReference",
@@ -116,6 +116,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[11.0.1, )"
+            },
             "Dapper": {
               "target": "Package",
               "version": "[2.0.123, )"
@@ -176,8 +180,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\BusinesLayer\\BusinesLayer.csproj": {
-                "projectPath": "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\BusinesLayer\\BusinesLayer.csproj"
+              "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\BusinesLayer\\UserManagement.BusinesLayer.csproj": {
+                "projectPath": "C:\\Users\\ASUS\\source\\repos\\UserManagement.Api\\BusinesLayer\\UserManagement.BusinesLayer.csproj"
               }
             }
           }
@@ -192,6 +196,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[11.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.1, )"
